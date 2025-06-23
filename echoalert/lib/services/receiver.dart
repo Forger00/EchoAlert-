@@ -14,26 +14,44 @@ class _EmergencyAlertCardState extends State<EmergencyAlertCard> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppbar(),
+<<<<<<< HEAD
       backgroundColor: const Color(0xFFD9D9D9),
       body: Center(
         child: Stack(
           children: [
+=======
+      backgroundColor: const Color(0xFFD9D9D9), 
+      body: Center(
+        child: Stack(
+          children: [
+            
+>>>>>>> 21ec90811a35c664adc9eacfe1ce7aaf9d34366b
             Container(
               margin: const EdgeInsets.symmetric(horizontal: 40),
               padding: const EdgeInsets.all(50),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(16),
+<<<<<<< HEAD
+=======
+                
+>>>>>>> 21ec90811a35c664adc9eacfe1ce7aaf9d34366b
               ),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: const [
+<<<<<<< HEAD
                   Icon(
                     Icons.warning_amber_rounded,
 
                     size: 80,
                     color: Color(0xFF830B2F),
                   ),
+=======
+                  Icon(Icons.warning_amber_rounded,
+                  
+                      size: 80, color: Color(0xFF830B2F)),
+>>>>>>> 21ec90811a35c664adc9eacfe1ce7aaf9d34366b
                   SizedBox(height: 10),
                   Text(
                     "Emergency Alert!",
@@ -44,12 +62,21 @@ class _EmergencyAlertCardState extends State<EmergencyAlertCard> {
                     ),
                   ),
                   SizedBox(height: 60),
+<<<<<<< HEAD
                   Text("From: John Doe", style: TextStyle(fontSize: 16)),
                   Text("House no.: 2269", style: TextStyle(fontSize: 16)),
                   Text(
                     "House name: Doe Residence",
                     style: TextStyle(fontSize: 16),
                   ),
+=======
+                  Text("From: John Doe",
+                      style: TextStyle(fontSize: 16)),
+                  Text("House no.: 2269",
+                      style: TextStyle(fontSize: 16)),
+                  Text("House name: Doe Residence",
+                      style: TextStyle(fontSize: 16)),
+>>>>>>> 21ec90811a35c664adc9eacfe1ce7aaf9d34366b
                   SizedBox(height: 20),
                   Text(
                     "!!Fire!!",
@@ -63,12 +90,20 @@ class _EmergencyAlertCardState extends State<EmergencyAlertCard> {
               ),
             ),
 
+<<<<<<< HEAD
+=======
+            
+>>>>>>> 21ec90811a35c664adc9eacfe1ce7aaf9d34366b
             Positioned(
               right: 50,
               top: 10,
               child: GestureDetector(
                 onTap: () {
+<<<<<<< HEAD
                   Navigator.pop(context);
+=======
+                  Navigator.pop(context); 
+>>>>>>> 21ec90811a35c664adc9eacfe1ce7aaf9d34366b
                 },
                 child: const CircleAvatar(
                   radius: 12,
@@ -80,7 +115,11 @@ class _EmergencyAlertCardState extends State<EmergencyAlertCard> {
           ],
         ),
       ),
+<<<<<<< HEAD
       bottomNavigationBar: NavBarScreen(currentIndex: 1),
+=======
+       bottomNavigationBar: NavBarScreen(currentIndex: 1),
+>>>>>>> 21ec90811a35c664adc9eacfe1ce7aaf9d34366b
     );
   }
 }

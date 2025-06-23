@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
 
-class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
+class ProfileTab extends StatefulWidget {
+  const ProfileTab({super.key});
+
+  @override
+  State<ProfileTab> createState() => _ProfileTabState();
+}
+
+class _ProfileTabState extends State<ProfileTab> {
+final TextEditingController _passwordController =  TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Column(children: [const Text('data')]));
+    return Container();
   }
 }
