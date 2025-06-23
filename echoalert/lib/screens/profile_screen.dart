@@ -8,7 +8,8 @@ class ProfileTab extends StatefulWidget {
 }
 
 class _ProfileTabState extends State<ProfileTab> {
-final TextEditingController
+final TextEditingController _passwordController =  TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
