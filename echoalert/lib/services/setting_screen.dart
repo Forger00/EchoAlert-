@@ -1,51 +1,136 @@
-// import 'package:firebase_auth/firebase_auth.dart';
+import 'package:echoalert/components/custom_appbar.dart';
+import 'package:echoalert/components/navbar_screen.dart';
 import 'package:flutter/material.dart';
 
-class SettingsScreen extends StatelessWidget {
-  const SettingsScreen({super.key});
+class SettingScreen extends StatefulWidget {
+  const SettingScreen({super.key});
 
-  void _logout(BuildContext context) async {
-    // await FirebaseAuth.instance.signOut();
-    if (!context.mounted) return;
-    Navigator.pushReplacementNamed(context, '/login');
-  }
+  @override
+  State<SettingScreen> createState() => _ProfileTabState();
+}
 
-  void _deleteAccount(BuildContext context) async {
-    try {
-      // await FirebaseAuth.instance.currentUser!.delete();
-      if (!context.mounted) return;
-      Navigator.pushReplacementNamed(context, '/splash');
-    } catch (e) {
-      if (!context.mounted) return;
+class _ProfileTabState extends State<SettingScreen> {
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _confirmPasswordController =
+      TextEditingController();
+      
+        get user => null;
+  // final user = FirebaseAuth.instance.currentUser;
+
+  void _changePassword() async {
+    final newPassword = _passwordController.text.trim();
+    final confirmPassword = _confirmPasswordController.text.trim();
+
+    if (newPassword != confirmPassword) {
       ScaffoldMessenger.of(
         context,
-      ).showSnackBar(SnackBar(content: Text('Error: ${e.toString()}')));
+      ).showSnackBar(const SnackBar(content: Text("Password do not match")));
+      return;
+    }
+
+    if (newPassword.length < 6) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text("Password must be at least 6 characters."),
+        ),
+      );
+      return;
+    }
+     try {
+      await user!.updatePassword(_passwordController.text.trim());
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Password changed successfully . ")),
+      );
+      _passwordController.clear();
+      _confirmPasswordController.clear();
+    } catch (e) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text("Error: ${e.toString()}")));
     }
   }
+   void _deletePassword() async {
+
+   }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: const Color(0xFF2A2A2A),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          ListTile(
-            leading: const Icon(Icons.logout, color: Colors.white),
-            title: const Text('Logout', style: TextStyle(color: Colors.white)),
-            onTap: () => _logout(context),
-          ),
-          const Divider(),
-          ListTile(
-            leading: const Icon(Icons.delete_forever, color: Color(0xFFEB2F3D)),
-            title: const Text(
-              'Delete Account',
-              style: TextStyle(color: Color(0xFFEB2F3D)),
+    return Scaffold(
+      appBar: CustomAppbar(),
+      backgroundColor:  Colors.white,
+      body: Padding(
+        padding:const EdgeInsets.all(26),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Center(
+              child: CircleAvatar(
+                radius: 50,
+                backgroundColor: Colors.grey,
+                child: Icon(
+                  Icons.person_2_outlined,
+                  size: 60,
+                  color: Colors.white,
+                ),
+              ),
+            )
+            ,
+                        
+            const SizedBox(height: 30),
+            const Text(
+              'Change Password',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 24,
+                color: const Color(0xFF98211F),
+              ),
             ),
-            onTap: () => _deleteAccount(context),
-          ),
-        ],
-      ),
+             const SizedBox(height: 30),
+            TextField(
+              controller: _passwordController,
+              obscureText: true,
+              decoration: const InputDecoration(
+                labelText: 'New Password',
+                labelStyle: TextStyle(color: Colors.black),
+                border: OutlineInputBorder(),
+              ),
+            ),
+            const SizedBox(height: 10),
+            TextField(
+              controller: _confirmPasswordController,
+              obscureText: true,
+              decoration: const InputDecoration(
+                labelText: 'Confirm New Password',
+                labelStyle: TextStyle(color: Colors.black),
+                border: OutlineInputBorder(),
+              ),
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color(0xFF98211F),
+              ),
+              onPressed: _changePassword,
+              child: const Text(
+                'Update password',
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+             const SizedBox(height: 10),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color(0xFF98211F),
+              ),
+              onPressed: _deletePassword,
+              child: const Text(
+                'Delete Account',
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+            
+          ],
+        ),),
+        bottomNavigationBar: NavBarScreen(currentIndex: 4),
     );
   }
-} 
+}
