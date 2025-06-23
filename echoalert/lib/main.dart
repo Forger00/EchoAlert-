@@ -1,6 +1,14 @@
+
+
+// import 'package:echoalert/screen/splash_screen.dart';
+
+import 'package:echoalert/components/navbar_screen.dart';
+import 'package:echoalert/screens/home_screen.dart';
+import 'package:echoalert/screens/profile_screen.dart';
+import 'package:echoalert/services/aftersos_screen.dart';
 import 'package:echoalert/services/receiver.dart';
+
 import 'package:flutter/material.dart';
-// import 'package:echoalert/services/aftersos.dart';
 
 void main() {
   runApp(const MyApp());
@@ -9,10 +17,10 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'Flutter Demo',
       home: EmergencyAlertCard(),
     );
   }

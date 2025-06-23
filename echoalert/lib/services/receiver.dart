@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:echoalert/components/navbar_screen.dart';
+import 'package:echoalert/components/custom_appbar.dart';
 
 class EmergencyAlertCard extends StatefulWidget {
   const EmergencyAlertCard({super.key});
@@ -11,6 +13,7 @@ class _EmergencyAlertCardState extends State<EmergencyAlertCard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: CustomAppbar(),
       backgroundColor: const Color(0xFFD9D9D9), 
       body: Center(
         child: Stack(
@@ -22,13 +25,7 @@ class _EmergencyAlertCardState extends State<EmergencyAlertCard> {
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(16),
-                boxShadow: const [
-                  BoxShadow(
-                    color: Colors.black26,
-                    blurRadius: 10,
-                    offset: Offset(4, 4),
-                  ),
-                ],
+                
               ),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -83,6 +80,7 @@ class _EmergencyAlertCardState extends State<EmergencyAlertCard> {
           ],
         ),
       ),
+       bottomNavigationBar: NavBarScreen(currentIndex: 1),
     );
   }
 }
