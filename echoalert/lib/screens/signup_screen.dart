@@ -83,7 +83,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       children: [
                         Checkbox(
                           value: agreedToTerms,
-                          activeColor: Colors.deepPurple,
+                          activeColor: const Color.fromARGB(255, 107, 41, 206),
                           onChanged: (value) {
                             setState(() {
                               agreedToTerms = value ?? false;
@@ -127,7 +127,9 @@ class _SignupScreenState extends State<SignupScreen> {
                 children: [
                   const Text("Already have an account? "),
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.pushReplacementNamed(context, '/login');
+                    },
                     child: const Text(
                       "Login",
                       style: TextStyle(
