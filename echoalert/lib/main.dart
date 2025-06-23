@@ -1,6 +1,7 @@
-import 'package:echoalert/components/navbar_screen.dart';
 import 'package:echoalert/screens/home_screen.dart';
+import 'package:echoalert/screens/login.dart';
 import 'package:echoalert/screens/profile_screen.dart';
+import 'package:echoalert/screens/signup_screen.dart';
 import 'package:echoalert/services/aftersos_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -15,11 +16,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: '/sos',
+      home: LoginScreen(),
+      // initialRoute: '/sos',
       routes: {
         '/home': (context) => HomeScreen(),
         '/profile': (context) => ProfileScreen(),
         '/sos': (context) => AftersosScreen(),
+        '/signup': (context) => SignupScreen(),
+        '/login': (context) => LoginScreen(),
       },
     );
   }

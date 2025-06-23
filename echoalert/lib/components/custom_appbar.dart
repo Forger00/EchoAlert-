@@ -13,7 +13,7 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
         centerTitle: true,
         title: CircleAvatar(
           backgroundImage: AssetImage('assets/images/logo.png'),
-          radius: 35,
+          radius: 25,
           backgroundColor: Colors.white,
         ),
       ),
@@ -22,5 +22,5 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   // TODO: implement preferredSize
-  Size get preferredSize => throw UnimplementedError();
+  Size get preferredSize => Size.fromHeight(60);
 }

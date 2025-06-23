@@ -143,14 +143,18 @@ class AftersosScreen extends StatelessWidget {
               ),
               child: const Text(
                 "Send Alert",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 12,
+                  color: Color(0xFFFFFFFF),
+                ),
               ),
             ),
             const SizedBox(height: 10),
           ],
         ),
       ),
-      bottomNavigationBar: NavBarScreen(currentIndex: 1),
+      bottomNavigationBar: NavBarScreen(currentIndex: 0),
     );
   }
 }
