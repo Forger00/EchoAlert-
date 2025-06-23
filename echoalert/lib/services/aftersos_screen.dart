@@ -32,7 +32,7 @@ class AftersosScreen extends StatelessWidget {
                   Container(
                     padding: EdgeInsets.all(20),
                     decoration: BoxDecoration(
-                      border: Border.all(color: Colors.red.shade300),
+                      border: Border.all(color: Color(0xFF830B2F)),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Column(
@@ -41,7 +41,7 @@ class AftersosScreen extends StatelessWidget {
                         Icon(
                           Icons.local_fire_department,
                           size: 46,
-                          color: Colors.red[900],
+                          color: Color(0xFF830B2F),
                         ),
                         const SizedBox(height: 8),
                         const Text(
@@ -57,7 +57,7 @@ class AftersosScreen extends StatelessWidget {
                   Container(
                     padding: EdgeInsets.all(20),
                     decoration: BoxDecoration(
-                      border: Border.all(color: Colors.red.shade300),
+                      border: Border.all(color:Color(0xFF830B2F)),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Column(
@@ -66,7 +66,7 @@ class AftersosScreen extends StatelessWidget {
                         Icon(
                           Icons.health_and_safety,
                           size: 46,
-                          color: Colors.red[900],
+                          color: Color(0xFF830B2F),
                         ),
                         const SizedBox(height: 8),
                         const Text(
@@ -91,7 +91,7 @@ class AftersosScreen extends StatelessWidget {
                         Icon(
                           Icons.local_police,
                           size: 46,
-                          color: Colors.red[900],
+                          color: Color(0xFF830B2F),
                         ),
                         const SizedBox(height: 8),
                         const Text(
@@ -107,7 +107,7 @@ class AftersosScreen extends StatelessWidget {
                   Container(
                     padding: EdgeInsets.all(20),
                     decoration: BoxDecoration(
-                      border: Border.all(color: Colors.red.shade300),
+                      border: Border.all(color: Color(0xFF830B2F)),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Column(
@@ -116,7 +116,7 @@ class AftersosScreen extends StatelessWidget {
                         Icon(
                           Icons.add_circle_outline,
                           size: 46,
-                          color: Colors.red[900],
+                          color: Color(0xFF830B2F),
                         ),
                         const SizedBox(height: 8),
                         const Text(
@@ -135,7 +135,7 @@ class AftersosScreen extends StatelessWidget {
             ElevatedButton(
               onPressed: () {},
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.red,
+                backgroundColor: Color(0xFF830B2F),
                 padding: const EdgeInsets.all(20),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
@@ -143,14 +143,18 @@ class AftersosScreen extends StatelessWidget {
               ),
               child: const Text(
                 "Send Alert",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 12,
+                  color: Color(0xFFFFFFFF),
+                ),
               ),
             ),
             const SizedBox(height: 10),
           ],
         ),
       ),
-      bottomNavigationBar: NavBarScreen(currentIndex: 1),
+      bottomNavigationBar: NavBarScreen(currentIndex: 0),
     );
   }
 }
