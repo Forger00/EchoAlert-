@@ -60,106 +60,108 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppbar(),
-      body: Padding(
-        padding: const EdgeInsets.all(10),
-        child: Center(
-          child: Column(
-            children: [
-              const SizedBox(height: 30),
-              const Text(
-                'Emergency help needed?',
-                style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.brown,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(10),
+          child: Center(
+            child: Column(
+              children: [
+                const SizedBox(height: 30),
+                const Text(
+                  'Emergency help needed?',
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.brown,
+                  ),
                 ),
-              ),
-              const SizedBox(height: 20),
-              const Text(
-                'Press the button',
-                style: TextStyle(fontSize: 12, color: Colors.brown),
-              ),
-              const SizedBox(height: 5),
-              const Text(
-                "Help will arrive soon",
-                style: TextStyle(fontSize: 12, color: Colors.brown),
-              ),
-              const SizedBox(height: 20),
-              GestureDetector(
-                onTap: () {
-                  Navigator.pushNamed(context, '/sos');
-                },
-                child: PulseIcon(
-                  icon: Icons.sos,
-                  pulseColor: Colors.red,
-                  iconSize: 44.0,
-                  pulseSize: 232.0,
-                  innerSize: 65.0,
+                const SizedBox(height: 20),
+                const Text(
+                  'Press the button',
+                  style: TextStyle(fontSize: 12, color: Colors.brown),
                 ),
-              ),
-
-              const SizedBox(height: 40),
-              Container(
-                padding: EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  border: Border.all(color: Colors.white60),
-                  borderRadius: BorderRadius.circular(20),
+                const SizedBox(height: 5),
+                const Text(
+                  "Help will arrive soon",
+                  style: TextStyle(fontSize: 12, color: Colors.brown),
                 ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        Icon(Icons.add_alert, size: 24),
-                        SizedBox(width: 10),
-                        const Text(
-                          "Recent Alert Section",
-                          style: TextStyle(
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.brown,
+                const SizedBox(height: 20),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(context, '/sos');
+                  },
+                  child: PulseIcon(
+                    icon: Icons.sos,
+                    pulseColor: Colors.red,
+                    iconSize: 44.0,
+                    pulseSize: 232.0,
+                    innerSize: 65.0,
+                  ),
+                ),
+        
+                const SizedBox(height: 40),
+                Container(
+                  padding: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    border: Border.all(color: Colors.white60),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Icon(Icons.add_alert, size: 24),
+                          SizedBox(width: 10),
+                          const Text(
+                            "Recent Alert Section",
+                            style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.brown,
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        const SizedBox(height: 10),
-                        Icon(Icons.report_problem, size: 16),
-                        SizedBox(width: 10),
-                        const Text("Earthquake update"),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        const SizedBox(height: 10),
-                        Icon(Icons.push_pin, size: 16),
-                        SizedBox(width: 10),
-                        const Text("Location"),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        const SizedBox(height: 10),
-                        Icon(Icons.access_time_filled, size: 16),
-                        SizedBox(width: 10),
-                        const Text("Time"),
-                      ],
-                    ),
-                    const SizedBox(height: 20),
-                    Container(
-                      height: 150,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        border: Border.all(color: Colors.grey),
+                        ],
                       ),
-                    ),
-                  ],
+                      Row(
+                        children: [
+                          const SizedBox(height: 10),
+                          Icon(Icons.report_problem, size: 16),
+                          SizedBox(width: 10),
+                          const Text("Earthquake update"),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          const SizedBox(height: 10),
+                          Icon(Icons.push_pin, size: 16),
+                          SizedBox(width: 10),
+                          const Text("Location"),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          const SizedBox(height: 10),
+                          Icon(Icons.access_time_filled, size: 16),
+                          SizedBox(width: 10),
+                          const Text("Time"),
+                        ],
+                      ),
+                      const SizedBox(height: 20),
+                      Container(
+                        height: 150,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          border: Border.all(color: Colors.grey),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
