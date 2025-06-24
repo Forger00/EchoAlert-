@@ -35,13 +35,19 @@ class HomeScreen extends StatelessWidget {
                 style: TextStyle(fontSize: 12, color: Colors.brown),
               ),
               const SizedBox(height: 20),
-              PulseIcon(
-                icon: Icons.sos,
-                pulseColor: Colors.red,
-                iconSize: 44.0,
-                pulseSize: 232.0,
-                innerSize: 65.0,
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, '/sos');
+                },
+                child: PulseIcon(
+                  icon: Icons.sos,
+                  pulseColor: Colors.red,
+                  iconSize: 44.0,
+                  pulseSize: 232.0,
+                  innerSize: 65.0,
+                ),
               ),
+
               const SizedBox(height: 40),
               Container(
                 padding: EdgeInsets.all(10),

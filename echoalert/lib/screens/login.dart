@@ -7,7 +7,6 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  bool agreedToTerms = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +19,7 @@ class _LoginScreenState extends State<LoginScreen> {
               const SizedBox(height: 20),
               Center(
                 child: CircleAvatar(
-                  backgroundImage: AssetImage('assets/images/logo.png', ), 
+                  backgroundImage: AssetImage('assets/images/logo.png'),
                   radius: 50,
                   backgroundColor: Colors.white,
                 ),
@@ -68,7 +67,13 @@ class _LoginScreenState extends State<LoginScreen> {
                     const SizedBox(height: 10),
                     Center(
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushNamedAndRemoveUntil(
+                            context,
+                            '/home',
+                            (route) => false,
+                          );
+                        },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Color(0xFF830B2F),
                           padding: const EdgeInsets.symmetric(

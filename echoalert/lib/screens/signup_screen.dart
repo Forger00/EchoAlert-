@@ -98,7 +98,9 @@ class _SignupScreenState extends State<SignupScreen> {
                     const SizedBox(height: 10),
                     Center(
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushReplacementNamed(context, '/home');
+                        },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Color(0xFF830B2F),
                           padding: const EdgeInsets.symmetric(
