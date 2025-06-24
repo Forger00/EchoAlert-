@@ -2,6 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:echoalert/components/custom_appbar.dart';
 import 'package:echoalert/components/navbar_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:google_maps_flutter_android/google_maps_flutter_android.dart';
+import 'package:google_maps_flutter_platform_interface/google_maps_flutter_platform_interface.dart';
 import 'package:pulsator/pulsator.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -12,6 +15,11 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  static const initialCameraPosition = CameraPosition(
+    target: LatLng(27.701187, 85.28318),
+    zoom: 11.5,
+  );
+
   @override
   void initState() {
     super.initState();
@@ -98,7 +106,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     innerSize: 65.0,
                   ),
                 ),
-        
+
                 const SizedBox(height: 40),
                 Container(
                   padding: EdgeInsets.all(10),
@@ -155,6 +163,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(12),
                           border: Border.all(color: Colors.grey),
+                        ),
+                        child: GoogleMap(
+                          myLocationButtonEnabled: false,
+                          zoomControlsEnabled: false,
+                          initialCameraPosition: initialCameraPosition,
                         ),
                       ),
                     ],
