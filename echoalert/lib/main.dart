@@ -5,12 +5,8 @@ import 'package:echoalert/screens/login.dart';
 import 'package:echoalert/screens/signup_screen.dart';
 import 'package:echoalert/services/aftersos_screen.dart';
 import 'package:echoalert/screens/splash_screen.dart';
-<<<<<<< HEAD
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
-=======
-import 'package:echoalert/services/setting_screen.dart';
->>>>>>> c9b2433ce3c505373e3d63626374f9211ad1c042
 import 'package:flutter/material.dart';
 
 void main() async {
@@ -30,8 +26,22 @@ class MyApp extends StatelessWidget {
       home: StreamBuilder<User?>(
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
-          if (snapshot.hasData) {
-            return const HomeScreen();
+          final user = FirebaseAuth.instance.currentUser;
+
+          if (user != null) {
+            return FutureBuilder(
+              future: user.reload(),
+              builder: (context, reloadSnapshot) {
+                if (reloadSnapshot.connectionState == ConnectionState.done) {
+                  if (FirebaseAuth.instance.currentUser == null) {
+                    return const SplashScreen();
+                  }
+                  return const HomeScreen();
+                } else {
+                  return const Center(child: CircularProgressIndicator());
+                }
+              },
+            );
           } else {
             return const SplashScreen();
           }
@@ -39,19 +49,11 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         '/home': (context) => HomeScreen(),
-<<<<<<< HEAD
-=======
-        '/profile': (context) => ProfileScreen(),
->>>>>>> c9b2433ce3c505373e3d63626374f9211ad1c042
         '/sos': (context) => AftersosScreen(),
         '/signup': (context) => SignupScreen(),
         '/login': (context) => LoginScreen(),
         '/splash': (context) => SplashScreen(),
-<<<<<<< HEAD
         '/contact': (context) => ContactScreen(),
-=======
-        '/settings':(context) => SettingScreen(),
->>>>>>> c9b2433ce3c505373e3d63626374f9211ad1c042
       },
     );
   }

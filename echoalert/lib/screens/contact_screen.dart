@@ -1,8 +1,5 @@
 import 'package:echoalert/components/custom_appbar.dart';
-<<<<<<< HEAD
 import 'package:echoalert/components/navbar_screen.dart';
-=======
->>>>>>> c9b2433ce3c505373e3d63626374f9211ad1c042
 import 'package:flutter/material.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 
