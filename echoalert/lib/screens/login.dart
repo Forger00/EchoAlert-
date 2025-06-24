@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -7,6 +8,41 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  login() async {
+    String email = _emailController.text.trim();
+    String password = _passwordController.text;
+    if (email.isEmpty || password.isEmpty) {
+      _showSnackBar("Please fill in all the fields");
+      return;
+    }
+    if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w]{2,4}').hasMatch(email)) {
+      _showSnackBar("Please enter valid emil");
+      return;
+    }
+    if (password.length < 8) {
+      _showSnackBar("Password must be atleast 8 character");
+      return;
+    }
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: _emailController.text,
+        password: _passwordController.text,
+      );
+      Navigator.pushReplacementNamed(context, '/home');
+    } on FirebaseAuthException catch (e) {
+      _showSnackBar(e.message ?? "Login Failed");
+    }
+  }
+
+  void _showSnackBar(String message) {
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(SnackBar(content: Text(message)));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,24 +92,32 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     const SizedBox(height: 20),
-
-                    const _InputLabel(text: 'Email:'),
-                    _buildInputField("Enter your Email"),
-
-                    const _InputLabel(text: 'Password:'),
-                    _buildInputField("Enter your Password", obscureText: true),
+                    TextField(
+                      controller: _emailController,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(22),
+                        ),
+                        labelText: "Enter your Email:",
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    TextField(
+                      controller: _passwordController,
+                      obscureText: true,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(22),
+                        ),
+                        labelText: "Enter Password",
+                      ),
+                    ),
                     const SizedBox(height: 10),
 
                     const SizedBox(height: 10),
                     Center(
                       child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.pushNamedAndRemoveUntil(
-                            context,
-                            '/home',
-                            (route) => false,
-                          );
-                        },
+                        onPressed: () => login(),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Color(0xFF830B2F),
                           padding: const EdgeInsets.symmetric(
@@ -120,40 +164,6 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
         ),
       ),
-    );
-  }
-
-  Widget _buildInputField(String hint, {bool obscureText = false}) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 12.0),
-      child: TextField(
-        obscureText: obscureText,
-        decoration: InputDecoration(
-          hintText: hint,
-          filled: true,
-          fillColor: Colors.grey[300],
-          contentPadding: const EdgeInsets.symmetric(
-            horizontal: 15,
-            vertical: 12,
-          ),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(25),
-            borderSide: BorderSide.none,
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class _InputLabel extends StatelessWidget {
-  final String text;
-  const _InputLabel({required this.text});
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 12.0, bottom: 6.0),
-      child: Text(text, style: const TextStyle(fontWeight: FontWeight.w500)),
     );
   }
 }

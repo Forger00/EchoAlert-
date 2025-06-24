@@ -35,6 +35,11 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
   pulsator: ^1.0.0+2
+  firebase_core: ^3.14.0
+  firebase_auth: ^5.6.0
+  flutter_phone_direct_caller: ^2.2.1
+  cloud_firestore: ^5.6.9
+  firebase_messaging: ^15.2.7
 
 dev_dependencies:
   flutter_test:
@@ -62,6 +67,11 @@ flutter:
   assets:
      - assets/images/logo.png
      - assets/images/Dark.jpg
+     - assets/images/ambulance.png
+     - assets/images/childern.png
+     - assets/images/fire_brigade.png
+     - assets/images/women.png
+     - assets/images/police.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

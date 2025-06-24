@@ -1,10 +1,60 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:echoalert/components/custom_appbar.dart';
 import 'package:echoalert/components/navbar_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:pulsator/pulsator.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  @override
+  void initState() {
+    super.initState();
+
+    FirebaseFirestore.instance.collection('alerts').limit(1).snapshots().listen(
+      (snapshot) {
+        if (snapshot.docs.isNotEmpty) {
+          final alert = snapshot.docs.first;
+          _showPopupAlert(
+            alert['name'],
+            alert['houseNo'],
+            alert['houseName'],
+            alert['type'],
+          );
+        }
+      },
+    );
+  }
+
+  void _showPopupAlert(
+    String name,
+    String houseNo,
+    String houseName,
+    String type,
+  ) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        icon: Icon(Icons.emergency, size: 45),
+        title: const Text('"Emergency Alert'),
+        content: Text(
+          "From: $name \n House No: $houseNo \n House Name: $houseName \n\n $type",
+          style: TextStyle(fontSize: 18),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(),
+            child: Text("Dismiss"),
+          ),
+        ],
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
