@@ -1,4 +1,5 @@
 import 'package:echoalert/components/drawer.dart';
+import 'package:echoalert/components/navbar_screen.dart';
 import 'package:echoalert/services/setting_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -127,6 +128,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
         ],
       ),
+       bottomNavigationBar: NavBarScreen(currentIndex: 1),
     );
   }
 
