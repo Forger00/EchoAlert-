@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: LoginScreen(),
-      initialRoute: '/profile',
+      initialRoute: '/splash',
       routes: {
         '/home': (context) => HomeScreen(),
         '/profile': (context) => ProfileScreen(),
@@ -27,6 +27,7 @@ class MyApp extends StatelessWidget {
         '/signup': (context) => SignupScreen(),
         '/login': (context) => LoginScreen(),
         '/splash': (context) => SplashScreen(),
+        '/settings':(context) => SettingScreen(),
       },
     );
   }

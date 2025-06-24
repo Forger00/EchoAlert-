@@ -6,10 +6,10 @@ class SettingScreen extends StatefulWidget {
   const SettingScreen({super.key});
 
   @override
-  State<SettingScreen> createState() => _ProfileTabState();
+  State<SettingScreen> createState() => _SettingScreenState();
 }
 
-class _ProfileTabState extends State<SettingScreen> {
+class _SettingScreenState extends State<SettingScreen> {
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _confirmPasswordController =
       TextEditingController();
@@ -45,6 +45,7 @@ class _ProfileTabState extends State<SettingScreen> {
       _confirmPasswordController.clear();
     } catch (e) {
       ScaffoldMessenger.of(
+        // ignore: use_build_context_synchronously
         context,
       ).showSnackBar(SnackBar(content: Text("Error: ${e.toString()}")));
     }
